@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>СтройСмета — сметы, проекты и клиентские предложения для строительных компаний</title>
+<meta name="description" content="Считайте в своих расценках, собирайте дом из готовых узлов и отправляйте клиенту ссылку вместо PDF. Демо-платформа для строительных компаний: сметы, проекты, AI-рендеры, триггеры просмотра, CRM.">
+<meta name="theme-color" content="#F7F4EF">
+<meta property="og:title" content="СтройСмета — считайте в своих расценках, отправляйте ссылку, а не PDF">
+<meta property="og:description" content="Смета, проект и клиентское предложение в одной системе. Демо без регистрации.">
+<meta property="og:image" content="assets/img/og.webp">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== Вертикальная навигация ===== -->
+<nav class="rail" aria-label="Разделы страницы">
+  <a class="rail__logo" href="#top" aria-label="СтройСмета — наверх">С</a>
+  <div class="rail__nav" id="railNav">
+    <span class="rail__track" aria-hidden="true"></span>
+    <span class="rail__fill" id="railFill" aria-hidden="true"></span>
+  </div>
+  <div class="rail__foot">
+    <span class="deco-ruler" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="rail__pct" id="railPct">0%</span>
+  </div>
+</nav>
+
+<!-- ===== Липкое меню ===== -->
+<header class="topbar" id="topbar">
+  <span class="progressbar" aria-hidden="true"><i id="progFill"></i></span>
+  <div class="topbar__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true">С</span>
+      <span>
+        <span class="brand__name">СтройСмета</span>
+        <span class="brand__sub">демо-платформа</span>
+      </span>
+    </a>
+    <div class="topbar__crumb" id="crumb" aria-hidden="true">
+      <span class="num" id="crumbNo">01</span><span id="crumbTxt">Первый экран</span>
+    </div>
+    <span class="topbar__spacer"></span>
+    <button class="topbar__total" id="miniTotal" type="button" aria-label="Открыть ваш расчёт">
+      <b id="miniTotalVal">0 ₽</b><i>/ мес</i>
+    </button>
+    <button class="btn btn--sm btn--ghost" type="button" data-scroll="#faq">Вопросы</button>
+    <button class="btn btn--sm btn--primary" type="button" data-scroll="#zayavka">Открыть демо</button>
+  </div>
+</header>
+
+<nav class="chipnav" id="chipnav" aria-label="Разделы (мобильная)"></nav>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ===== 01. Первый экран ===== -->
+<section class="section hero" id="hero" data-nav="Первый экран">
+  <span class="deco-grid" aria-hidden="true"></span>
+  <div class="wrap hero__in">
+    <div>
+      <span class="hero__badge"><b>Демо</b> браузерная версия · без регистрации</span>
+      <h1>Считайте в своих расценках.<br>Отправляйте <em>ссылку</em>, а не PDF.</h1>
+      <p class="hero__lead">Смета, проект дома и клиентское предложение живут в одном месте. Клиент открывает ссылку с телефона, разворачивает этапы, сравнивает комплектации и принимает вариант. Вы видите, что он её открыл.</p>
+
+      <div class="hero__cta">
+        <button class="btn btn--primary" type="button" data-scroll="#zayavka">
+          Собрать демо-стенд
+          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn--ghost" type="button" data-scroll="#vnutri">Что внутри</button>
+      </div>
+
+      <div class="hero__micro">
+        <div><b>0 ₽</b><span>стартовый тариф</span></div>
+        <div><b>Без карты</b><span>и без регистрации</span></div>
+        <div><b>В браузере</b><span>данные демо — у вас</span></div>
+      </div>
+
+      <!-- интерактив №1: питает «Ваш расчёт» -->
+      <div class="hero__tuner">
+        <div class="hero__tuner-h">
+          <span class="deco-node" aria-hidden="true"></span>
+          <span>Шаг 1 · настройка под вас</span>
+        </div>
+        <div class="slider">
+          <div class="slider__top">
+            <label class="slider__lbl" for="areaRange">Средняя площадь ваших объектов</label>
+            <span class="slider__val"><span id="areaVal" class="num">154</span><small>м²</small></span>
+          </div>
+          <input id="areaRange" type="range" min="60" max="450" step="2" value="154"
+                 aria-describedby="areaHint" data-dock="area">
+          <div class="slider__scale" aria-hidden="true"><span>60</span><span>150</span><span>250</span><span>350</span><span>450</span></div>
+          <p id="areaHint" class="field__hint" style="margin:0">Смета справа пересчитается сразу — как в системе.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- правая колонка -->
+    <div class="hero__stack">
+      <div class="est">
+        <span class="deco-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <div class="est__bar">
+          <span class="num">СМЕТА A-143</span>
+          <b>Дом в Истре</b>
+          <span style="flex:1"></span>
+          <span class="chip chip--moss"><span class="dot-live"></span>черновик</span>
+        </div>
+        <div class="est__body">
+          <div class="est__client">
+            <div><b style="font-size:14.5px">Анна и Михаил Волковы</b><br><small>газобетон D500 · 2 этажа · <span class="num" id="estArea">154</span> м²</small></div>
+            <span class="chip">A-143</span>
+          </div>
+          <div class="tbl-scroll">
+          <table class="tbl">
+            <thead><tr><th>Раздел</th><th class="r">Объём</th><th class="r">Сумма</th></tr></thead>
+            <tbody>
+              <tr><td>Фундамент, плита 300 мм</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="16102">2 479 700 ₽</td></tr>
+              <tr><td>Коробка дома</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="19045">2 933 000 ₽</td></tr>
+              <tr><td>Кровля тёплая</td><td class="r num" data-vol="1.18">182 м²</td><td class="r num" data-sum="12596">1 939 800 ₽</td></tr>
+              <tr><td>Инженерия и отделка</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="29724">4 577 500 ₽</td></tr>
+              <tr class="tbl__total"><td>Итого по объекту</td><td class="r"></td><td class="r num" id="estTotal">11 930 000 ₽</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="est__hint">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3.6M7 10h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Демо-расценки. В системе тут стоят ваши закупочные и продажные цены.
+          </p>
+        </div>
+        <div class="est__foot">
+          <span class="deco-ruler" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span>4 раздела · 96 позиций · 12 узлов</span>
+        </div>
+      </div>
+
+      <figure class="shot" style="aspect-ratio:16/10;margin:0">
+        <span class="deco-stamp" style="left:14px;top:14px">AI-рендер</span>
+        <img src="assets/img/hero.webp" alt="Визуализация двухэтажного дома со светлой штукатуркой и графитовой кровлей на лесном участке в вечернем свете" width="1600" height="1000" loading="eager" fetchpriority="high" decoding="async">
+        <figcaption class="shot__cap">
+          <span class="shot__tag">Проект A-143 · вечер</span>
+          <span class="shot__tag">4 ракурса</span>
+        </figcaption>
+      </figure>
+      <span class="deco-dim" aria-hidden="true"><i></i><span>ссылка открывается с телефона без регистрации</span><i></i></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Конвейер ===== -->
+<section class="pipe" aria-label="Путь работы с клиентом">
+  <div class="wrap" style="padding-left:0;padding-right:0">
+    <div class="pipe__in" id="pipe">
+      <button class="pipe__step" type="button" aria-current="true" data-pipe="Расценки, узлы, объёмы. Итог пересчитывается на каждое изменение.">
+        <span class="num">ЭТАП 01</span><b>Смета</b><span id="pipeTxt1">В своих ценах, с наценкой и маржой</span>
+        <i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
+      </button>
+      <button class="pipe__step" type="button"><span class="num">ЭТАП 02</span><b>Проект</b><span>Клиент, параметры дома, файлы, рендеры</span>
+        <i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+      <button class="pipe__step" type="button"><span class="num">ЭТАП 03</span><b>Предложение</b><span>Ссылка с вариантами и графиком платежей</span>
+        <i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+      <button class="pipe__step" type="button"><span class="num">ЭТАП 04</span><b>Просмотр</b><span>Видно, что клиент открыл и сколько смотрел</span>
+        <i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+      <button class="pipe__step" type="button"><span class="num">ЭТАП 05</span><b>Договор</b><span>Принятый вариант уходит в CRM</span>
+        <i aria-hidden="true"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02. Что внутри ===== -->
+<section class="section section--muted" id="vnutri" data-nav="Что внутри">
+  <span class="deco-dots" aria-hidden="true"></span>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="section-head">
+      <span class="eyebrow">Одна платформа</span>
+      <h2>От своей цены до подписанного договора</h2>
+      <p class="lead">Ничего не нужно собирать вручную из Excel, PDF и переписки. Пять частей системы, которые знают друг о друге.</p>
+    </div>
+
+    <!-- интерактив №2 -->
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:20px">
+      <span class="eyebrow" style="margin:0">Шаг 2 · в чём вы строите</span>
+      <div class="seg" role="tablist" aria-label="Технология строительства" id="techSeg">
+        <button role="tab" aria-selected="true" data-tech="gazobeton">Газобетон</button>
+        <button role="tab" aria-selected="false" data-tech="keramoblok">Керамоблок</button>
+        <button role="tab" aria-selected="false" data-tech="karkas">Каркас</button>
+        <button role="tab" aria-selected="false" data-tech="monolit">Монолит</button>
+      </div>
+    </div>
+
+    <div class="bento">
+      <!-- 01 сметы -->
+      <article class="tile b1 rv">
+        <span class="tile__no">01 · СМЕТЫ</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 9v12M3 15h18" stroke="currentColor" stroke-width="1.3"/></svg>
+        <h3>Считайте в своих расценках</h3>
+        <p>Работы, материалы, техника, наценка и маржа — в нормальной табличной смете. Меняете объём или цену — итог пересчитывается сразу.</p>
+        <div class="tbl-scroll" style="margin-top:16px">
+        <table class="tbl">
+          <thead><tr><th>Позиция</th><th class="r">Кол-во</th><th class="r">Цена</th><th class="r">Сумма</th></tr></thead>
+          <tbody>
+            <tr>
+              <td id="matName">Газобетон D500</td>
+              <td class="r">
+                <label class="sr" for="matQty">Количество материала</label>
+                <input class="est__qty" id="matQty" type="number" min="1" max="600" step="1" value="107" inputmode="numeric">
+                <span class="num" id="matUnit" style="margin-left:5px;color:var(--tx-3)">м³</span>
+              </td>
+              <td class="r num" id="matPrice">7 800 ₽</td>
+              <td class="r num" id="matSum">834 600 ₽</td>
+            </tr>
+            <tr>
+              <td id="workName">Кладка блока</td>
+              <td class="r num"><span id="workQty">107</span> <span class="num" id="workUnit" style="color:var(--tx-3)">м³</span></td>
+              <td class="r num" id="workPrice">4 800 ₽</td>
+              <td class="r num" id="workSum">513 600 ₽</td>
+            </tr>
+            <tr class="tbl__total"><td>Итого по разделу</td><td class="r"></td><td class="r"></td><td class="r num" id="secTotal">1 348 200 ₽</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="est__hint" id="editHint">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9.4 2.2l2.4 2.4-7 7L2 12.4l.8-2.8 6.6-7.4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Поменяйте количество в белом поле — раздел пересчитается.
+        </p>
+      </article>
+
+      <!-- 02 расценки -->
+      <article class="tile b2 tile--tall rv rv-d1">
+        <span class="tile__no">02 · РАСЦЕНКИ</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="19" cy="17" r="2.4" stroke="currentColor" stroke-width="1.4"/></svg>
+        <h3>Своя база цен</h3>
+        <p>Закупочная цена, цена продажи, единица измерения и история обновлений.</p>
+        <div class="tile__grow" style="display:block">
+          <div class="counter"><b class="num" data-count="248">0</b><span>позиций<br>в базе</span></div>
+          <div class="meter" data-meter="92"><i></i></div>
+          <div class="meter-lbl"><span>актуальность цен</span><span class="num">92%</span></div>
+        </div>
+      </article>
+
+      <!-- 03 узлы -->
+      <article class="tile b3 rv rv-d2">
+        <span class="tile__no">03 · УЗЛЫ</span>
+        <span class="deco-hatch" aria-hidden="true" style="position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;opacity:.5;border-radius:50%"></span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20V9l9-6 9 6v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.4"/></svg>
+        <h3>Готовые решения дома</h3>
+        <p>Один квадратный метр стены или кровли уже содержит материалы, работы и технику.</p>
+        <svg class="wall" viewBox="0 0 320 118" role="img" aria-label="Схема пирога тёплой кровли: пять слоёв от внутренней отделки до кровельного покрытия" style="margin-top:16px">
+          <g class="lyr"><rect x="4" y="4" width="312" height="14" rx="2" fill="#C8BFAE"/><text x="12" y="14.5" font-size="8" font-family="JetBrains Mono, monospace" fill="#3A4247">Металлочерепица 0,5 мм</text></g>
+          <g class="lyr"><rect x="4" y="22" width="312" height="16" rx="2" fill="#E0D6C4"/><text x="12" y="33" font-size="8" font-family="JetBrains Mono, monospace" fill="#3A4247">Обрешётка + контробрешётка</text></g>
+          <g class="lyr"><rect x="4" y="42" width="312" height="34" rx="2" fill="#F3E3C6"/><path d="M4 42h312v34H4z" fill="url(#hatchA)"/><text x="12" y="62" font-size="8" font-family="JetBrains Mono, monospace" fill="#3A4247">Минвата 250 мм между стропил</text></g>
+          <g class="lyr"><rect x="4" y="80" width="312" height="12" rx="2" fill="#DDE7DE"/><text x="12" y="88.5" font-size="8" font-family="JetBrains Mono, monospace" fill="#3A4247">Пароизоляция, проклейка стыков</text></g>
+          <g class="lyr"><rect x="4" y="96" width="312" height="18" rx="2" fill="#EDE8E0"/><text x="12" y="108" font-size="8" font-family="JetBrains Mono, monospace" fill="#3A4247">Каркас под ГКЛ</text></g>
+          <defs><pattern id="hatchA" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#D9861F" stroke-width="1" opacity=".35"/></pattern></defs>
+        </svg>
+        <div class="wall-legend">
+          <div><span class="chip chip--amber">Тёплая кровля</span><span>5 компонентов · <b class="num">9 150 ₽/м²</b></span></div>
+        </div>
+      </article>
+
+      <!-- 04 проекты -->
+      <article class="tile b4 rv">
+        <span class="deco-tape" aria-hidden="true" style="right:18px;top:-8px"></span>
+        <span class="tile__no">04 · ПРОЕКТЫ</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <h3>Всё по объекту вместе</h3>
+        <p>Клиент, параметры дома, сметы, файлы, фотографии со стройки и AI-рендеры — в одной карточке.</p>
+        <div class="paramlist">
+          <span class="chip"><span class="num" id="chipArea">154</span> м²</span>
+          <span class="chip">2 этажа</span>
+          <span class="chip" id="chipTech">Газобетон</span>
+          <span class="chip">Истра, МО</span>
+          <span class="chip chip--amber">14 файлов</span>
+        </div>
+      </article>
+
+      <!-- 05 клиентская ссылка -->
+      <article class="tile b5 rv rv-d1">
+        <span class="tile__no">05 · ССЫЛКА</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 006 .5l2.5-2.5a4 4 0 00-5.7-5.7L11.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 10a4 4 0 00-6-.5L5.5 12a4 4 0 005.7 5.7l1.3-1.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h3>Не PDF, а живое предложение</h3>
+        <p>Клиент смотрит проект, раскрывает этапы, сравнивает варианты и принимает предложение.</p>
+        <div class="browser">
+          <div class="browser__bar">
+            <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="browser__url">smeta.link/a-143-volkovy</span>
+          </div>
+          <div class="browser__body" aria-hidden="true">
+            <span class="browser__row browser__row--w2"></span>
+            <span class="browser__row browser__row--w1"></span>
+            <span class="browser__row browser__row--amber browser__row--w3"></span>
+          </div>
+        </div>
+        <button class="linkish" type="button" style="margin-top:14px" data-modal-open>
+          Посмотреть глазами клиента
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10l6-6M6 4h4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03. AI-визуализация (инверсная) ===== -->
+<section class="section section--ink viz" id="viz" data-nav="AI-визуализация">
+  <span class="deco-grid deco-grid--inv" aria-hidden="true"></span>
+  <span class="deco-noise" aria-hidden="true"></span>
+  <div class="wrap viz__in">
+    <div>
+      <span class="eyebrow eyebrow--inv">AI-визуализация</span>
+      <h2 style="margin:14px 0 16px">Покажите дом,<br>которого ещё нет</h2>
+      <p class="lead">Загрузите эскиз или опишите проект словами. Получите ракурсы под предложение: фасад, терраса, вид с дрона. Галерея сама попадает в смету клиента.</p>
+
+      <ul class="checks" id="vizChecks">
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path class="dpath" d="M3 9.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Несколько ракурсов одного проекта</li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path class="dpath" d="M3 9.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Дневной, вечерний и сезонный свет</li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path class="dpath" d="M3 9.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ваши фото со стройки рядом с рендерами</li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path class="dpath" d="M3 9.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Изображения хранятся внутри проекта</li>
+      </ul>
+
+      <!-- интерактив №3 -->
+      <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line-inv)">
+        <span class="eyebrow eyebrow--inv" style="margin-bottom:10px">Шаг 3</span>
+        <label class="switch switch--inv">
+          <input type="checkbox" id="rendersToggle" data-dock="renders">
+          <span class="switch__box" aria-hidden="true"></span>
+          <span class="switch__txt">Показываю клиентам рендеры<small>Включит пакет генераций в вашем демо-стенде</small></span>
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <div class="viz__stage">
+        <span class="deco-corners deco-corners--inv" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <div class="viz__frame" id="vizFrame">
+          <img src="assets/img/facade-day.webp" class="is-on" data-view="day" alt="Главный фасад дома при дневном рассеянном свете" width="1200" height="750" loading="lazy" decoding="async">
+          <img src="assets/img/terrace-evening.webp" data-view="evening" alt="Терраса дома в синий час с тёплым светом ламп" width="1200" height="750" loading="lazy" decoding="async">
+          <img src="assets/img/drone.webp" data-view="drone" alt="Дом и участок с высоты птичьего полёта" width="1200" height="750" loading="lazy" decoding="async">
+        </div>
+        <div class="viz__meta">
+          <span id="vizCaption">Главный фасад · дневной свет</span>
+          <span class="chip chip--inv">A-143 · 1 / 3</span>
+        </div>
+      </div>
+
+      <div class="viz__thumbs" role="tablist" aria-label="Ракурсы проекта">
+        <button class="viz__thumb" role="tab" aria-selected="true" data-view="day"><img src="assets/img/facade-day.webp" alt="" width="300" height="188" loading="lazy"></button>
+        <button class="viz__thumb" role="tab" aria-selected="false" data-view="evening"><img src="assets/img/terrace-evening.webp" alt="" width="300" height="188" loading="lazy"></button>
+        <button class="viz__thumb" role="tab" aria-selected="false" data-view="drone"><img src="assets/img/drone.webp" alt="" width="300" height="188" loading="lazy"></button>
+      </div>
+
+      <div class="prompt">
+        <svg class="prompt__ico" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l1.6 4.3 4.4 1.7-4.4 1.7L8 13.5l-1.6-4.3L2 7.5l4.4-1.7L8 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        <span class="prompt__txt" id="promptTxt">Современный дом, светлая штукатурка, графитовая кровля, вечерний свет…</span>
+      </div>
+      <div class="presets" role="group" aria-label="Примеры описаний">
+        <button class="preset" type="button" aria-pressed="true" data-view="day" data-prompt="Светлая штукатурка, графитовая кровля, пасмурный дневной свет, вид с подъезда">Фасад днём</button>
+        <button class="preset" type="button" aria-pressed="false" data-view="evening" data-prompt="Терраса с деревянным потолком, тёплые лампы, синий час, низкий ракурс">Терраса вечером</button>
+        <button class="preset" type="button" aria-pressed="false" data-view="drone" data-prompt="Дом и участок с высоты, подъезд и газон, свет позднего дня">Вид с дрона</button>
+      </div>
+      <p style="font-size:12.5px;color:var(--tx-inv-2);margin:12px 0 0">Это примеры описаний и готовые ракурсы проекта A-143 — переключайте, чтобы увидеть, что уходит клиенту.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04. Клиентское предложение ===== -->
+<section class="section" id="klientu" data-nav="Клиенту">
+  <span class="deco-dots" aria-hidden="true"></span>
+  <div class="wrap client__in" style="position:relative;z-index:1">
+    <div style="position:relative">
+      <div class="phone">
+        <span class="phone__notch" aria-hidden="true"></span>
+        <div class="phone__scr">
+          <div class="phone__hd">
+            <div class="phone__co"><i>СК</i> СтройКрафт · предложение № A-143</div>
+            <b style="display:block;font-size:19px;letter-spacing:-.02em;margin-top:10px">Дом в Истре</b>
+            <span style="font-size:12.5px;color:var(--tx-3)">Для Анны и Михаила</span>
+          </div>
+          <div class="phone__img"><img src="assets/img/proposal.webp" alt="Дом со стороны сада в утреннем свете — обложка клиентского предложения" width="600" height="450" loading="lazy" decoding="async"></div>
+          <div class="phone__body">
+            <div class="phone__price">
+              <span style="font-size:13px;color:var(--tx-3)">Стоимость</span>
+              <b class="num" id="phonePrice">11 930 000 ₽</b>
+            </div>
+            <div class="phone__sec"><span>Фундамент</span><span>2 479 700 ₽</span></div>
+            <div class="phone__sec"><span>Коробка дома</span><span>2 933 000 ₽</span></div>
+            <div class="phone__sec"><span>Кровля тёплая</span><span>1 939 800 ₽</span></div>
+            <div class="phone__sec"><span>Инженерия и отделка</span><span>4 577 500 ₽</span></div>
+            <div class="phone__price" style="border-bottom:0;margin-bottom:0">
+              <span style="font-size:13px;color:var(--tx-3)">Срок</span><b class="num">126 дней</b>
+            </div>
+            <div style="display:grid;gap:8px;margin-top:14px">
+              <span class="btn btn--sm btn--primary btn--full" role="presentation">Принять предложение</span>
+              <span class="btn btn--sm btn--ghost btn--full" role="presentation">Посмотреть подробную смету</span>
+            </div>
+            <p style="font-size:11px;color:var(--tx-3);margin:12px 0 0;text-align:center">Открывается без регистрации · всегда актуальная версия</p>
+          </div>
+        </div>
+      </div>
+      <span class="deco-dim deco-dim--v" aria-hidden="true" style="position:absolute;right:-4px;top:10px;bottom:10px;width:12px"><i></i><span>без регистрации</span><i></i></span>
+      <span class="deco-callout" aria-hidden="true" style="margin-top:14px;justify-content:center;width:100%">
+        <svg width="26" height="12" viewBox="0 0 26 12" fill="none"><path d="M0 6h22M18 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        так предложение видит клиент
+      </span>
+    </div>
+
+    <div>
+      <span class="eyebrow">Предложение по ссылке</span>
+      <h2 style="margin:14px 0 16px">Клиент понимает, за что он платит</h2>
+      <p class="lead">Страница открывается с телефона без регистрации. Внутри — фото проекта, комплектации, подробная таблица, график платежей и кнопка принятия. Никаких «файл повреждён» и «а какая версия последняя».</p>
+
+      <ul class="featlist" style="margin-top:22px">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div><b>Триггер просмотра</b><span>Система пишет, когда клиент открыл смету и сколько времени смотрел. Звонок попадает в момент интереса, а не через неделю.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M7 14h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <div><b>Фирменный стиль</b><span>Логотип, цвета, видео, действующая акция и собственный домен компании. Клиент видит вас, а не платформу.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5A8 8 0 116.5 5.4L4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 3.5V8h4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b>Всегда актуальная версия</b><span>Поменяли смету — по той же ссылке новый итог. Старые PDF больше не гуляют по чатам.</span></div>
+        </li>
+      </ul>
+
+      <div class="card" style="padding:18px 20px;margin-top:22px">
+        <h4 style="margin-bottom:12px;display:flex;align-items:center;gap:9px"><span class="deco-node" aria-hidden="true"></span>Лента событий по смете A-143</h4>
+        <ul class="tline">
+          <li><b>Ссылка отправлена</b><time>вторник, 14:02</time></li>
+          <li><b>Клиент открыл смету</b> — раздел «Кровля» развёрнут<time>вторник, 20:41 · 6 минут просмотра</time></li>
+          <li><b>Выбран вариант «Комфорт»</b><time>среда, 09:15</time></li>
+          <li><b>Задача менеджеру в CRM</b> — перезвонить<time>среда, 09:15</time></li>
+        </ul>
+        <p style="font-size:12px;color:var(--tx-3);margin:12px 0 0">Пример ленты из демо-проекта, а не живая статистика сайта.</p>
+      </div>
+
+      <div class="pathalt">
+        <button class="btn btn--ghost" type="button" data-modal-open>Открыть пример предложения</button>
+        <span class="chip"><span class="dot-live"></span>демо-данные</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05. AI и автоматизация ===== -->
+<section class="section section--muted" id="avtomatika" data-nav="Автоматизация">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">AI и автоматизация</span>
+      <h2>Система не только считает. Она помогает закрыть сделку.</h2>
+      <p class="lead">Четыре механики, которые работают, пока вы на объекте.</p>
+    </div>
+
+    <div class="auto">
+      <article class="tile a1 rv">
+        <span class="tile__no">AI</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M18.5 16l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        <h3>AI-ассистент смет</h3>
+        <p>Находит устаревшие цены, объясняет итог и предлагает замены. Спросите так, как спросил бы клиент.</p>
+        <div class="qa" id="qaBlock">
+          <button class="qa__q" type="button" aria-pressed="false" data-a="Замените 4 узла на аналоги: кровельный пирог, окна, входную группу и лестницу. Экономия <b>946 000 ₽</b>, срок не меняется.">Как уложиться в 11 млн ₽?</button>
+          <button class="qa__q" type="button" aria-pressed="false" data-a="В смете 7 позиций с ценой старше 90 дней. Самая критичная — <b>арматура A500C</b>, последнее обновление 11 марта.">Где устаревшие цены?</button>
+          <button class="qa__q" type="button" aria-pressed="false" data-a="Маржа по смете <b>18,4%</b>. Ниже средней у вас держат два раздела: кровля и инженерия.">Какая тут маржа?</button>
+          <div class="qa__a" id="qaAnswer" role="status" aria-live="polite" hidden></div>
+        </div>
+        <p style="font-size:12px;color:var(--tx-3);margin:12px 0 0">Пример диалога из демо-проекта.</p>
+      </article>
+
+      <article class="tile a2 rv rv-d1">
+        <span class="deco-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="tile__no">ВАРИАНТЫ</span>
+        <h3>Базовый, комфорт и премиум — из ваших же узлов</h3>
+        <p>Один проект, три комплектации под разный бюджет. Клиент сравнивает их на своей странице и выбирает сам.</p>
+        <div class="variants" role="group" aria-label="Комплектации">
+          <button class="variant" type="button" aria-pressed="false" data-variant="base">
+            <span class="variant__img"><img src="assets/img/variant-base.webp" alt="Компактный одноэтажный дом простой формы" width="400" height="300" loading="lazy"></span>
+            <span class="variant__b"><b>Базовый</b><span>10,98 млн</span></span>
+          </button>
+          <button class="variant" type="button" aria-pressed="true" data-variant="comfort">
+            <span class="variant__img"><img src="assets/img/variant-comfort.webp" alt="Двухэтажный дом с панорамными окнами и террасой" width="400" height="300" loading="lazy"></span>
+            <span class="variant__b"><b>Комфорт</b><span>11,93 млн</span></span>
+          </button>
+          <button class="variant" type="button" aria-pressed="false" data-variant="premium">
+            <span class="variant__img"><img src="assets/img/variant-premium.webp" alt="Большой дом с отделкой камнем и деревом, бассейн и благоустройство" width="400" height="300" loading="lazy"></span>
+            <span class="variant__b"><b>Премиум</b><span>14,44 млн</span></span>
+          </button>
+        </div>
+        <p id="variantNote" style="font-size:13.5px;color:var(--tx-2);margin:14px 0 0;min-height:44px">
+          <b>Комфорт:</b> тёплая кровля, окна с двухкамерным стеклопакетом, разводка инженерии, черновая отделка. Разница с базовым — 950 000 ₽.
+        </p>
+      </article>
+
+      <article class="tile a3 rv rv-d2">
+        <span class="tile__no">ТРИГГЕРЫ</span>
+        <h3>Вы узнаёте о просмотре первым</h3>
+        <p>Открыл, читает дольше пяти минут, выбрал вариант, принял предложение — событие уходит в Telegram или почту.</p>
+        <div style="display:grid;gap:10px;grid-template-columns:1fr;margin-top:16px">
+          <div class="card card--flat" style="padding:12px 14px;display:flex;align-items:center;gap:11px;background:var(--paper-2)">
+            <span class="dot-live" aria-hidden="true"></span>
+            <div style="flex:1"><b style="font-size:14px">Просмотр → Telegram</b><br><span style="font-size:12.5px;color:var(--tx-3)">«Волковы открыли смету A-143»</span></div>
+            <span class="chip">18:41</span>
+          </div>
+          <div class="card card--flat" style="padding:12px 14px;display:flex;align-items:center;gap:11px;background:var(--paper-2)">
+            <span class="deco-node" aria-hidden="true"></span>
+            <div style="flex:1"><b style="font-size:14px">Принято → задача в CRM</b><br><span style="font-size:12.5px;color:var(--tx-3)">Ответственный, сумма, срок</span></div>
+            <span class="chip">авто</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tile a4 rv">
+        <span class="tile__no">CRM</span>
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7.5l8-4 8 4-8 4-8-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 12l8 4 8-4M4 16.5l8 4 8-4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <h3>Синхронизация с CRM</h3>
+        <p>Клиент, сумма, статус и события уходят в amoCRM или Битрикс24 — без ручного переноса.</p>
+        <div class="crm">
+          <span class="crm__pill"><i>A</i> amoCRM</span>
+          <span class="crm__pill"><i>Б</i> Битрикс24</span>
+          <span class="crm__pill"><i>TG</i> Telegram</span>
+        </div>
+        <div class="deco-ruler" aria-hidden="true" style="margin-top:16px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06. Ваша математика ===== -->
+<section class="section" id="matematika" data-nav="Ваша математика">
+  <span class="deco-grid" aria-hidden="true" style="opacity:.3"></span>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="section-head">
+      <span class="eyebrow">Честный счёт</span>
+      <h2>Посчитайте на своих числах, а не на наших</h2>
+      <p class="lead">Мы не знаем вашу конверсию и не будем обещать проценты. Зато вот арифметика, которую вы можете проверить прямо сейчас.</p>
+    </div>
+
+    <div class="math__in">
+      <div class="calc">
+        <span class="deco-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <div class="calc__grid">
+          <div class="slider">
+            <div class="slider__top">
+              <label class="slider__lbl" for="cntRange">Смет и КП в месяц</label>
+              <span class="slider__val"><span id="cntVal" class="num">12</span><small>шт</small></span>
+            </div>
+            <input id="cntRange" type="range" min="2" max="60" step="1" value="12" data-dock="volume">
+            <div class="slider__scale" aria-hidden="true"><span>2</span><span>20</span><span>40</span><span>60</span></div>
+          </div>
+
+          <div class="slider">
+            <div class="slider__top">
+              <label class="slider__lbl" for="hrsRange">Часов на одну смету с пересборками</label>
+              <span class="slider__val"><span id="hrsVal" class="num">3,5</span><small>ч</small></span>
+            </div>
+            <input id="hrsRange" type="range" min="1" max="12" step="0.5" value="3.5">
+            <div class="slider__scale" aria-hidden="true"><span>1</span><span>4</span><span>8</span><span>12</span></div>
+          </div>
+
+          <div class="slider">
+            <div class="slider__top">
+              <label class="slider__lbl" for="chkRange">Средний чек объекта</label>
+              <span class="slider__val"><span id="chkVal" class="num">11,9</span><small>млн ₽</small></span>
+            </div>
+            <input id="chkRange" type="range" min="2" max="40" step="0.1" value="11.9">
+            <div class="slider__scale" aria-hidden="true"><span>2</span><span>15</span><span>28</span><span>40</span></div>
+          </div>
+        </div>
+
+        <div class="formula" aria-hidden="true">
+          <b class="num" id="fCnt">12</b> смет <i>×</i> <b class="num" id="fHrs">3,5</b> ч <i>=</i> <b class="num" id="fTot">42</b> часа в месяц
+        </div>
+        <div class="deco-ruler" aria-hidden="true" style="margin-top:14px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+
+      <div>
+        <div class="result">
+          <span class="deco-grid deco-grid--inv" aria-hidden="true" style="opacity:.5"></span>
+          <div style="position:relative;z-index:1">
+            <span class="eyebrow eyebrow--inv">Уходит на сметы</span>
+            <div class="result__big"><b class="num" id="resHours">42</b><span>часа<br>в месяц</span></div>
+            <p>Это ваше время в Excel: пересчёты, новая версия PDF, «а пришлите ещё раз с другой кровлей». Работа, которую клиент не видит и за которую не платит.</p>
+            <div class="result__split">
+              <div><span>Одна сорванная сделка</span><b class="num" id="resDeal">11,9 млн ₽</b></div>
+              <div><span>За год на сметах</span><b class="num" id="resYear">504 часа</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="honest">
+          <h4><span class="deco-node" aria-hidden="true"></span>Чего мы не обещаем</h4>
+          <p>Ни одного «+40% к конверсии». Такие цифры зависят от вашего рынка, менеджеров и цены, а не от кнопки в интерфейсе. Возьмите тариф 0 ₽, соберите три реальные сметы и сравните с тем, как вы делаете это сейчас. Если разницы нет — вы ничего не потратили.</p>
+          <div class="pathalt">
+            <button class="btn btn--primary" type="button" data-scroll="#zayavka">Проверить на своих сметах
+              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="chip chip--moss">тариф 0 ₽ · без карты</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07. Как начать ===== -->
+<section class="section section--muted" id="start" data-nav="Как начать">
+  <span class="deco-dots" aria-hidden="true"></span>
+  <div class="wrap steps__in" style="position:relative;z-index:1">
+    <div class="steps__sticky">
+      <span class="eyebrow">Как работает</span>
+      <h2 style="margin:14px 0 16px">Пять шагов от проекта до ответа клиента</h2>
+      <p class="lead">Первые два шага делаются один раз. Дальше каждая новая смета собирается из уже готового.</p>
+      <div class="deco-ruler" aria-hidden="true" style="margin-top:20px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <ol class="steps__list">
+      <li class="step rv">
+        <span class="step__no num">01</span>
+        <div class="step__b">
+          <b>Заведите свои цены</b>
+          <p>Импорт расценок из Excel или ручной ввод. Закупка, продажа, единица измерения, дата обновления.</p>
+          <span class="chip">один раз</span>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step__no num">02</span>
+        <div class="step__b">
+          <b>Соберите типовые узлы</b>
+          <p>Метр стены, метр кровли, метр перекрытия — с материалами, работами и техникой внутри.</p>
+          <span class="chip">один раз</span>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step__no num">03</span>
+        <div class="step__b">
+          <b>Создайте проект</b>
+          <p>Клиент, параметры дома, документы, фотографии участка и AI-визуализации.</p>
+          <span class="chip">на каждый объект</span>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step__no num">04</span>
+        <div class="step__b">
+          <b>Отправьте ссылку</b>
+          <p>Клиент видит предложение с таблицей, рендерами, сроками и вариантами комплектации.</p>
+          <span class="chip">30 секунд</span>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step__no num">05</span>
+        <div class="step__b">
+          <b>Получите сигнал</b>
+          <p>Система сообщит о просмотре, создаст задачу в CRM и зафиксирует выбранный вариант.</p>
+          <span class="chip chip--amber">автоматически</span>
+        </div>
+      </li>
+      <li class="step step--cta rv">
+        <span class="deco-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <div class="step__b">
+          <b>Шаг ноль: посмотреть, как это устроено</b>
+          <p>Демо открывается в браузере, ничего устанавливать не нужно. Данные остаются у вас.</p>
+          <button class="btn btn--primary" type="button" data-scroll="#zayavka">Собрать демо-стенд
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 08. Тарифы ===== -->
+<section class="section" id="tarify" data-nav="Тарифы">
+  <span class="deco-dots" aria-hidden="true"></span>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="section-head">
+      <span class="eyebrow">Тарифы</span>
+      <h2>Начните с 0 ₽. Платите, когда система полезна.</h2>
+      <p class="lead">Стоимость за компанию в месяц. Без скрытых доплат за пользователей и проекты.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+      <span class="eyebrow" style="margin:0">Шаг 5 · выберите тариф</span>
+      <div class="seg" role="group" aria-label="Период оплаты" id="periodSeg">
+        <button type="button" aria-selected="true" data-period="month">Помесячно</button>
+        <button type="button" aria-selected="false" data-period="year">За год · −20%</button>
+      </div>
+    </div>
+
+    <div class="deco-ruler" aria-hidden="true" style="margin-top:16px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="plans" id="plans">
+      <article class="plan" data-plan="free" data-picked="false">
+        <span class="plan__nm">Бесплатный</span>
+        <div class="plan__pr"><b class="num" data-price-free="0">0 ₽</b><span>/ месяц</span></div>
+        <p class="plan__for">Для первых реальных расчётов</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>1 пользователь</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>3 активных проекта</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Сметы, расценки и узлы</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Клиентская ссылка</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>10 генераций изображений</li>
+          <li data-no><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Без CRM и автоматизации</li>
+        </ul>
+        <button class="btn btn--ghost btn--full btn--block" type="button" data-pick="free">Начать бесплатно</button>
+      </article>
+
+      <article class="plan plan--best" data-plan="standard" data-picked="false">
+        <span class="plan__tag">Популярный</span>
+        <span class="plan__nm">Стандартный</span>
+        <div class="plan__pr"><b class="num" data-price-standard="5000">5 000 ₽</b><span>/ месяц</span></div>
+        <p class="plan__for">Вся основная работа без ограничений</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>До 5 пользователей</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Проекты и сметы без лимита</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Своя база цен и узлов</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Фирменный стиль и логотип</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-варианты сметы</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>200 генераций изображений</li>
+        </ul>
+        <button class="btn btn--primary btn--full btn--block" type="button" data-pick="standard">Выбрать стандартный</button>
+      </article>
+
+      <article class="plan" data-plan="full" data-picked="false">
+        <span class="plan__nm">Полный</span>
+        <div class="plan__pr"><b class="num" data-price-full="10000">10 000 ₽</b><span>/ месяц</span></div>
+        <p class="plan__for">Для отдела продаж</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Пользователи без ограничений</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Триггеры просмотра смет</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Свой домен и стилистика</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Видео и акции в предложении</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-ассистент и варианты смет</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.4 3.4L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Синхронизация с CRM · 500 генераций</li>
+        </ul>
+        <button class="btn btn--ghost btn--full btn--block" type="button" data-pick="full">Попробовать полный</button>
+      </article>
+    </div>
+
+    <div class="matrix-wrap">
+      <button class="matrix-tog" type="button" aria-expanded="false" aria-controls="matrixBody">
+        Показать все отличия построчно
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="matrix-body" id="matrixBody">
+        <div class="matrix-scroll">
+          <table class="matrix">
+            <thead><tr><th>Возможность</th><th>0 ₽</th><th>5 000 ₽</th><th>10 000 ₽</th></tr></thead>
+            <tbody>
+              <tr><td>Сметы, проекты и клиенты</td><td>До 3</td><td class="yes">Без лимита</td><td class="yes">Без лимита</td></tr>
+              <tr><td>Собственные расценки и узлы</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td></tr>
+              <tr><td>Генерации изображений</td><td>10</td><td>200</td><td>500</td></tr>
+              <tr><td>Фирменный стиль и логотип</td><td class="no">нет</td><td class="yes">да</td><td class="yes">да</td></tr>
+              <tr><td>Свой домен</td><td class="no">нет</td><td class="no">нет</td><td class="yes">да</td></tr>
+              <tr><td>Видео и акции в предложении</td><td class="no">нет</td><td class="no">нет</td><td class="yes">да</td></tr>
+              <tr><td>Триггеры просмотра</td><td class="no">нет</td><td class="no">нет</td><td class="yes">да</td></tr>
+              <tr><td>AI-ассистент смет</td><td class="no">нет</td><td>базовый</td><td class="yes">полный</td></tr>
+              <tr><td>CRM-синхронизация</td><td class="no">нет</td><td class="no">нет</td><td class="yes">да</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--tx-3);margin:14px 0 0">Тариф можно менять в любой месяц. При переходе на бесплатный проекты не удаляются — становятся доступны только для чтения.</p>
+  </div>
+</section>
+
+<!-- ===== 09. Вопросы ===== -->
+<section class="section section--muted" id="faq" data-nav="Вопросы">
+  <span class="deco-grid" aria-hidden="true" style="opacity:.25"></span>
+  <div class="wrap faq__in" style="position:relative;z-index:1">
+    <div class="steps__sticky">
+      <span class="eyebrow">Вопросы</span>
+      <h2 style="margin:14px 0 16px">Что важно знать</h2>
+      <p class="lead">Перед вами публичное браузерное демо. Оно показывает механику продукта без регистрации.</p>
+      <div class="card" style="padding:16px 18px;margin-top:20px;display:flex;gap:12px;align-items:flex-start">
+        <span class="deco-node" aria-hidden="true" style="margin-top:3px"></span>
+        <p style="margin:0;font-size:14px;color:var(--tx-2)">Не нашли свой вопрос? Напишите его в заявке — ответим человеком, а не рассылкой.</p>
+      </div>
+      <div class="paramlist" style="margin-top:16px">
+        <span class="chip">демо и данные</span>
+        <span class="chip">доступ клиента</span>
+        <span class="chip">цены и маржа</span>
+        <span class="chip">интеграции</span>
+        <span class="chip chip--amber">перенос из Excel</span>
+      </div>
+      <button class="linkish" type="button" data-scroll="#zayavka" style="margin-top:18px">
+        Задать свой вопрос
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h9M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="deco-ruler" aria-hidden="true" style="margin-top:20px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="acc" id="acc">
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">Сохраняются ли изменения в демо?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>Да, но только в вашем браузере. Расчёт, который собирается справа на этой странице, лежит в локальном хранилище устройства и никуда не отправляется, пока вы сами не нажмёте «Забрать расчёт». Очистите данные сайта — и всё исчезнет.</p></div>
+      </div>
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">Клиенту нужна регистрация, чтобы открыть смету?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>Нет. Предложение открывается по прямой ссылке в любом браузере, с телефона тоже. Ссылку можно закрыть паролем или отключить в один клик, если переговоры закончились.</p></div>
+      </div>
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">Закупочные цены и маржа видны клиенту?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>Нет. Внутренняя смета и клиентское предложение — две разные страницы. Клиент видит разделы, объёмы и цену продажи. Закупка, наценка и маржа остаются внутри компании.</p></div>
+      </div>
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">Можно подключить реальные генерации изображений и CRM?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>В демо генерации и синхронизация показаны на готовых примерах. В рабочем аккаунте подключаются ключи генерации и интеграция с amoCRM или Битрикс24 — это настройка в кабинете, отдельная разработка не нужна.</p></div>
+      </div>
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">У нас уже своя таблица в Excel. Придётся всё переносить руками?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>Расценки импортируются из Excel: колонки сопоставляются один раз, дальше файл загружается целиком. Узлы придётся собрать самим — это как раз та часть, где ваша технология отличается от чужой.</p></div>
+      </div>
+      <div class="acc__i">
+        <button class="acc__q" type="button" aria-expanded="false">Чьи данные в системе и что будет, если мы уйдём?<span class="acc__pm" aria-hidden="true"></span></button>
+        <div class="acc__a"><p>База расценок, узлы и сметы принадлежат вашей компании. Выгрузка в Excel доступна на любом тарифе, включая бесплатный, и не отключается при уходе.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. Заявка ===== -->
+<section class="section section--ink final" id="zayavka" data-nav="Забрать расчёт">
+  <span class="deco-grid deco-grid--inv" aria-hidden="true"></span>
+  <span class="deco-noise" aria-hidden="true"></span>
+  <div class="wrap final__in">
+    <div>
+      <span class="eyebrow eyebrow--inv">Ваш расчёт готов</span>
+      <h2 style="margin:14px 0 16px">Мы уже собрали стенд.<br>Осталось решить, куда его прислать.</h2>
+      <p class="lead">Пока вы читали, страница собрала конфигурацию под вашу компанию. Это не анкета — это то, что будет заведено в демо-аккаунте: технология, типовая площадь, объём смет и тариф.</p>
+
+      <div class="summary" style="margin-top:22px">
+        <div class="summary__h">
+          <b>Ваш демо-стенд</b>
+          <span class="chip chip--inv"><span id="sumFilled" class="num">1</span> / 5 заполнено</span>
+        </div>
+        <dl id="summaryRows"></dl>
+        <div class="summary__f"><span style="font-size:13px;color:var(--tx-inv-2)">Тариф после демо</span><b id="sumTotal">5 000 ₽ / мес</b></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--tx-inv-2);margin:12px 0 0">Не то, что нужно? Прокрутите назад и поменяйте любой шаг — сводка обновится.</p>
+
+      <div class="pathalt" style="margin-top:20px">
+        <span class="chip chip--inv">Демо · 14 дней</span>
+        <span class="chip chip--inv">Без карты</span>
+        <span class="chip chip--inv">Выгрузка в Excel</span>
+      </div>
+    </div>
+
+    <div class="form" id="leadForm">
+      <span class="deco-stamp deco-stamp--inv" aria-hidden="true" style="right:16px;top:-12px;background:var(--paper)">A-143</span>
+      <div class="form__body">
+        <div class="form__steps" aria-hidden="true">
+          <span>Шаг <b id="stepNo">1</b> из 2</span>
+          <i class="on" id="bar1"></i><i id="bar2"></i>
+        </div>
+
+        <form id="theForm" novalidate>
+          <!-- шаг 1 -->
+          <div data-step="1">
+            <h3>Куда прислать демо-стенд</h3>
+            <p class="form__sub">Одно поле. Займёт меньше минуты.</p>
+            <div class="field" id="fEmail">
+              <label for="email">Рабочая почта <em>обязательно</em></label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@company.ru" aria-describedby="emailHint">
+              <span class="field__hint" id="emailHint">На неё придёт ссылка на стенд с вашими настройками. Без рассылок.</span>
+              <span class="field__err" role="alert">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3.6M7 10h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <span data-err-text>Проверьте адрес — похоже, в нём опечатка</span>
+              </span>
+            </div>
+            <label class="checkbox" for="agree">
+              <input type="checkbox" id="agree" name="agree">
+              <span>Согласен на обработку почты для отправки доступа к демо. Отписаться можно одним письмом.</span>
+            </label>
+            <span class="field__err" id="agreeErr" role="alert" style="margin:-6px 0 10px">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3.6M7 10h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span>Без согласия мы не сможем отправить письмо</span>
+            </span>
+            <button class="btn btn--primary btn--full btn--block" type="button" id="toStep2">
+              Дальше — 1 шаг
+              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <!-- шаг 2 -->
+          <div data-step="2" hidden>
+            <h3>Как к вам обращаться</h3>
+            <p class="form__sub">Телефон — по желанию. Нужен только если вам удобнее голосом.</p>
+            <div class="field" id="fName">
+              <label for="name">Имя <em>обязательно</em></label>
+              <input id="name" name="name" type="text" autocomplete="given-name" placeholder="Как вас зовут">
+              <span class="field__err" role="alert">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3.6M7 10h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <span data-err-text>Напишите имя — так письмо будет не от робота</span>
+              </span>
+            </div>
+            <div class="field">
+              <label for="company">Компания <em>не обязательно</em></label>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="ООО «СтройКрафт»">
+            </div>
+            <div class="field">
+              <label for="phone">Телефон <em>не обязательно</em></label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="phoneHint">
+              <span class="field__hint" id="phoneHint">Формат любой. Звоним только по стенду, в рабочее время.</span>
+            </div>
+            <button class="btn btn--amber btn--full btn--block" type="submit" id="submitBtn">
+              <span class="btn__spin" aria-hidden="true"></span>
+              <span>Забрать расчёт и демо-стенд</span>
+            </button>
+            <button class="btn btn--ghost btn--full btn--block btn--sm" type="button" id="backStep1" style="margin-top:8px">Назад</button>
+          </div>
+        </form>
+
+        <p class="form__legal">Нажимая кнопку, вы соглашаетесь с <a href="#faq">условиями демо</a>. Почту не передаём третьим лицам и не продаём.</p>
+
+        <div class="form__trust">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l5.5 2.3v4.1c0 3.3-2.3 6-5.5 6.6-3.2-.6-5.5-3.3-5.5-6.6V3.8L8 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.6 8.2l1.7 1.7 3.2-3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Отвечаем в рабочее время в течение дня. Демо-стенд приходит письмом сразу, звонок — только если вы оставите телефон.</span>
+        </div>
+      </div>
+
+      <div class="form__done" role="status" aria-live="polite">
+        <span class="seal" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 13.5l4.6 4.6L20 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Расчёт зафиксирован</h3>
+        <p class="form__sub" id="doneTxt">Стенд собирается. Письмо со ссылкой придёт на указанную почту — обычно в течение нескольких минут.</p>
+        <div class="summary" style="border-color:var(--line-2);background:var(--card)">
+          <div class="summary__h" style="border-color:var(--line)"><b>Что уйдёт в стенд</b><span class="chip">черновик A-143</span></div>
+          <dl id="doneRows"></dl>
+        </div>
+        <p style="font-size:12.5px;color:var(--tx-3);margin:14px 0 0">Это демо-страница: заявка никуда не отправляется, а расчёт сохранён в вашем браузере.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== Подвал ===== -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <div class="brand" style="margin-bottom:12px">
+        <span class="brand__mark" aria-hidden="true">С</span>
+        <span><span class="brand__name" style="color:var(--tx-inv)">СтройСмета</span>
+        <span class="brand__sub" style="color:#6E777B">сметы и предложения для строительных компаний</span></span>
+      </div>
+      <p style="font-size:14px;max-width:34ch;margin:0">Расчёт, проект и коммуникация с клиентом в одной системе. Демо-концепт.</p>
+      <div class="deco-ruler deco-ruler--inv" aria-hidden="true" style="margin-top:18px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div><h5>Продукт</h5><ul>
+      <li><a href="#vnutri">Что внутри</a></li>
+      <li><a href="#viz">AI-визуализация</a></li>
+      <li><a href="#klientu">Клиентская ссылка</a></li>
+      <li><a href="#avtomatika">Автоматизация</a></li>
+    </ul></div>
+    <div><h5>Решение</h5><ul>
+      <li><a href="#matematika">Ваша математика</a></li>
+      <li><a href="#start">Как начать</a></li>
+      <li><a href="#tarify">Тарифы</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul></div>
+    <div><h5>Демо</h5><ul>
+      <li><a href="#zayavka">Забрать расчёт</a></li>
+      <li><a href="#hero">Наверх</a></li>
+    </ul></div>
+  </div>
+  <div class="wrap foot__bot">
+    <span>© 2026 СтройСмета · демо-концепт</span>
+    <span class="mono">Все цифры на странице — демонстрационные</span>
+  </div>
+</footer>
+
+<!-- ===== Док «Ваш расчёт» ===== -->
+<aside class="dock" id="dock" aria-label="Ваш расчёт">
+  <button class="dock__top" type="button" id="dockToggle" aria-expanded="true" aria-controls="dockBody">
+    <span class="dock__ring" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 34 34"><circle class="bg" cx="17" cy="17" r="14.5"/><circle class="fg" id="ringFg" cx="17" cy="17" r="14.5" stroke-dasharray="91.1" stroke-dashoffset="72.9"/></svg>
+      <b id="ringTxt">20%</b>
+    </span>
+    <span class="dock__ttl"><strong>Ваш расчёт</strong><span id="dockSub">Собирается, пока вы читаете</span></span>
+    <svg class="dock__chev" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 13l5-5 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="dock__body" id="dockBody">
+    <dl class="dock__rows" id="dockRows"></dl>
+    <div class="dock__sum"><span>Тариф после демо</span><b id="dockTotal">5 000 ₽</b></div>
+    <div class="dock__act">
+      <button class="btn btn--sm btn--amber btn--full btn--block" type="button" data-scroll="#zayavka">Забрать расчёт</button>
+      <button class="dock__reset" type="button" id="dockReset">сбросить и собрать заново</button>
+    </div>
+    <p class="dock__note">Считается прямо в браузере из ваших ответов на странице. Ничего не отправляется, пока вы не нажмёте кнопку.</p>
+  </div>
+</aside>
+
+<!-- ===== Модалка ===== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTtl" hidden>
+  <div class="modal__bd" data-modal-close></div>
+  <div class="modal__win">
+    <button class="modal__x" type="button" data-modal-close aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <div style="padding:22px 22px 10px">
+      <span class="eyebrow">Глазами клиента</span>
+      <h3 id="modalTtl" style="margin:12px 0 6px">Предложение № A-143</h3>
+      <p style="font-size:14px;color:var(--tx-3);margin:0">Так страница выглядит у Анны и Михаила на телефоне.</p>
+    </div>
+    <div style="padding:0 22px 22px">
+      <figure class="shot" style="aspect-ratio:16/10;margin:0 0 16px">
+        <img src="assets/img/proposal.webp" alt="Дом со стороны сада — обложка клиентского предложения" width="900" height="563" loading="lazy">
+        <figcaption class="shot__cap"><span class="shot__tag">Дом в Истре · A-143</span></figcaption>
+      </figure>
+      <table class="tbl">
+        <tbody>
+          <tr><td>Фундамент, плита 300 мм</td><td class="r num">2 479 700 ₽</td></tr>
+          <tr><td>Коробка дома</td><td class="r num">2 933 000 ₽</td></tr>
+          <tr><td>Кровля тёплая</td><td class="r num">1 939 800 ₽</td></tr>
+          <tr><td>Инженерия и отделка</td><td class="r num">4 577 500 ₽</td></tr>
+          <tr class="tbl__total"><td>Итого · срок 126 дней</td><td class="r num">11 930 000 ₽</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12.5px;color:var(--tx-3);margin:14px 0 16px">Закупочные цены и маржа на этой странице не показываются — клиент видит только цену продажи по разделам.</p>
+      <button class="btn btn--primary btn--full btn--block" type="button" data-modal-close data-scroll="#zayavka">Хочу такую ссылку своим клиентам</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
