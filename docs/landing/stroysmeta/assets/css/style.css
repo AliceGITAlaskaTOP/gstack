@@ -162,7 +162,7 @@ section[id],[id]{scroll-margin-top:96px}
   .rail__idx{
     position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;text-align:right;
     font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.02em;
-    color:var(--tx-3);opacity:.75;transition:color var(--t-hover),opacity var(--t-hover);
+    color:var(--tx-3);opacity:1;transition:color var(--t-hover),opacity var(--t-hover);
   }
   .rail__label{
     position:absolute;left:56px;top:50%;transform:translateY(-50%) translateX(-6px);
@@ -177,7 +177,7 @@ section[id],[id]{scroll-margin-top:96px}
   .rail__item:hover .rail__dot{border-color:var(--amber-2);transform:translate(0,-50%) scale(1.25)}
   .rail__item[aria-current="true"] .rail__dot{background:var(--amber);border-color:var(--amber-2);
     box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 22%,transparent)}
-  .rail__item[aria-current="true"] .rail__idx{color:var(--amber-ink);opacity:1;font-weight:700}
+  .rail__item[aria-current="true"] .rail__idx{color:var(--amber-ink);font-weight:700}
   .rail__foot{display:flex;flex-direction:column;align-items:center;gap:10px}
   .rail__pct{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tx-3);letter-spacing:.04em}
 }
@@ -250,7 +250,7 @@ section[id],[id]{scroll-margin-top:96px}
 .dock__row:last-child{border-bottom:0}
 .dock__row dt{font-size:12.5px;color:var(--tx-3);display:flex;align-items:center;gap:7px}
 .dock__row dd{margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;text-align:right}
-.dock__row--empty dd{color:var(--tx-3);opacity:.7;font-style:normal}
+.dock__row--empty dd{color:var(--tx-3);font-style:normal}
 .dock__row--empty dt::before{background:var(--line-2)!important;border-color:var(--line-strong)!important}
 .dock__tick{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0;
   border:1px solid var(--amber-2);transition:background var(--t-ui)}
@@ -382,7 +382,9 @@ input[type=range]::-webkit-slider-thumb{
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--card);
   border:2px solid var(--ink);box-shadow:var(--shadow-1)}
 input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.12)}
-input[type=range]:focus-visible{outline:none}
+/* кольцо на самом контроле, а не только на бегунке: у псевдоэлемента ползунка
+   фокус видно не во всех движках */
+input[type=range]:focus-visible{outline:2px solid var(--amber-2);outline-offset:2px;border-radius:var(--r-sm)}
 input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 34%,transparent)}
 .slider__scale{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;
   font-size:10.5px;color:var(--tx-3);margin-top:-4px}
@@ -570,7 +572,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
   padding:20px;overflow:hidden;transition:border-color var(--t-hover),box-shadow var(--t-hover),transform var(--t-hover)}
 .tile:hover{border-color:var(--line-2);box-shadow:var(--shadow-2)}
 .tile__no{position:absolute;right:16px;top:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;
-  letter-spacing:.14em;color:var(--tx-3);opacity:.7}
+  letter-spacing:.14em;color:var(--tx-3)}
 .tile h3{font-size:19px;margin:9px 0 7px}
 .tile p{font-size:14.5px;color:var(--tx-3);margin:0;line-height:1.55}
 .tile__ico{width:26px;height:26px;color:var(--amber-2)}
@@ -740,7 +742,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
 .formula{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:20px;padding-top:18px;
   border-top:1px dashed var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--tx-3)}
 .formula b{color:var(--tx);font-weight:700}
-.formula i{color:var(--amber-2);font-style:normal;font-size:15px}
+.formula i{color:var(--amber-ink);font-style:normal;font-size:15px}
 .result{position:relative;background:var(--ink);color:var(--tx-inv);border-radius:var(--r-md);
   padding:clamp(22px,2.6vw,30px);overflow:hidden}
 .result__big{display:flex;align-items:baseline;gap:12px;margin:6px 0 4px}
@@ -818,7 +820,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
 .matrix tbody tr:hover{background:var(--paper-2)}
 .matrix tbody tr:last-child td{border-bottom:0}
 .matrix .yes{color:var(--moss);font-weight:700}
-.matrix .no{color:var(--tx-3);opacity:.6}
+.matrix .no{color:var(--tx-3)}
 
 /* ---------- 20. FAQ ---------- */
 .faq__in{display:grid;gap:clamp(24px,3vw,50px);grid-template-columns:1fr}
@@ -858,6 +860,12 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
 
 .form{background:var(--paper);color:var(--tx);border-radius:var(--r-lg);padding:clamp(22px,2.6vw,30px);
   box-shadow:var(--shadow-3);position:relative}
+/* форма лежит на инверсной секции, но сама светлая — возвращаем тёмный текст */
+.section--ink .form h3,.section--ink .form h4,.section--ink .form p,.section--ink .form label{color:var(--tx)}
+.section--ink .form .form__sub,.section--ink .form .field__hint,
+.section--ink .form .form__legal,.section--ink .form .form__trust{color:var(--tx-3)}
+.section--ink .form .checkbox{color:var(--tx-2)}
+.section--ink .form .field__err{color:var(--rust)}
 .form__steps{display:flex;align-items:center;gap:8px;margin-bottom:16px}
 .form__steps i{height:3px;border-radius:2px;background:var(--line-2);flex:1;transition:background var(--t-ui)}
 .form__steps i.on{background:var(--amber)}
@@ -909,7 +917,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
 .foot__in{display:grid;gap:28px;grid-template-columns:1fr}
 @media (min-width:760px){.foot__in{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 .foot h5{margin:0 0 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:#6E777B;font-weight:500}
+  text-transform:uppercase;color:#8B9498;font-weight:500}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 .foot a{font-size:14.5px;transition:color var(--t-hover)}
 .foot a:hover{color:var(--tx-inv)}
@@ -948,7 +956,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
 @media print{.rail,.topbar,.dock,.chipnav{display:none}main{margin:0;padding:0}}
 
 /* ---------- 25. Адаптив шапки ---------- */
-@media (min-width:860px){.topbar__total{display:inline-flex}}
+@media (min-width:860px){.topbar__total:not([hidden]){display:inline-flex}}
+.topbar__total[hidden]{display:none}
 @media (min-width:1180px){.topbar__crumb{display:flex}}
 @media (max-width:639px){
   .topbar__in{gap:10px}
@@ -984,3 +993,27 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color
     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),
     repeating-linear-gradient(45deg,rgba(217,134,31,.05) 0 1px,transparent 1px 9px);
 }
+
+/* ---------- 27. Доступность: тач-цели и видимый фокус ----------
+   WCAG 2.2 §2.5.8 требует 24×24; на главных элементах держим 44×44. */
+input[type=range]{height:44px}
+input[type=range]::-webkit-slider-thumb{margin-top:-8.5px}
+.est__qty{min-height:44px}
+.linkish{min-height:44px;align-items:center}
+.switch input{height:44px}
+.checkbox input{width:24px;height:24px}
+.checkbox{grid-template-columns:24px 1fr}
+.dock__reset{min-height:44px;padding:10px}
+.foot li a{display:inline-block;padding:5px 0}
+@media (max-width:560px){
+  .seg button{min-height:44px}
+  .preset{min-height:44px}
+}
+/* фокус там, где его не было */
+.chipnav a:focus-visible,
+.dock__top:focus-visible,
+.dock__reset:focus-visible{outline:2px solid var(--amber-2);outline-offset:2px}
+.dock__top:focus-visible{outline-color:var(--amber);outline-offset:-3px}
+.rail__item:focus-visible{outline:2px solid var(--amber-2);outline-offset:-2px;border-radius:var(--r-sm)}
+.brand{padding:6px 0}
+@media (max-width:719px){.btn--sm{min-height:44px}.chipnav a{padding:11px 14px}}

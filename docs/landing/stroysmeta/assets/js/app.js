@@ -204,12 +204,19 @@
     var per = state.period === 'year' ? ' / мес, оплата за год' : ' / мес';
     var txt = p === null ? 'тариф не выбран' : (p === 0 ? '0 ₽' : money(p));
     dockTotal.textContent = txt;
-    if (miniVal) miniVal.textContent = p === null ? '—' : (p === 0 ? '0 ₽' : money(p));
+    var mini = $('#miniTotal');
+    if (mini) {
+      mini.hidden = p === null;
+      if (p !== null) miniVal.textContent = p === 0 ? '0 ₽' : money(p);
+    }
     if (sumTotal) sumTotal.textContent = (p === null ? 'выберите тариф' : (p === 0 ? '0 ₽' + per : money(p) + per));
 
-    dockSub.textContent = filled === ROWS.length
+    var left = ROWS.length - filled;
+    dockSub.textContent = left === 0
       ? 'Готов. Осталось указать почту.'
-      : (filled >= 3 ? 'Ещё ' + (ROWS.length - filled) + ' — и стенд собран' : 'Собирается, пока вы читаете');
+      : filled + ' из ' + ROWS.length + ' · ' +
+        (filled === 1 ? 'собирается, пока вы читаете'
+                      : 'ещё ' + left + ' ' + (left === 1 ? 'шаг' : left < 5 ? 'шага' : 'шагов'));
 
     if (pulse && !reduce) {
       dock.classList.remove('dock__pulse');
@@ -254,14 +261,22 @@
       dock.classList.toggle('is-hidden', e[0].isIntersecting);
     }, { threshold: 0.14 }).observe($('#zayavka'));
 
-    /* на тарифах разворачивание дока перекрыло бы кнопку третьей карточки —
-       сворачиваем его на время и возвращаем прежнее состояние при уходе */
-    var autoFolded = false;
-    new IntersectionObserver(function (e) {
-      var vis = e[0].isIntersecting;
-      if (vis && !dock.classList.contains('is-collapsed')) { autoFolded = true; setCollapsed(true); }
-      else if (!vis && autoFolded) { autoFolded = false; setCollapsed(false); }
-    }, { threshold: 0.3 }).observe($('#tarify'));
+    /* Секции с собственной панелью справа (смета в первом экране, третья
+       карточка тарифов) док бы перекрыл. На них он сворачивается в полоску:
+       кольцо прогресса видно, содержимое не мешает. На узком экране обратно
+       сам не разворачивается — там он занял бы половину экрана. */
+    var onScreen = [];
+    var fo = new IntersectionObserver(function (list) {
+      list.forEach(function (e) {
+        var i = onScreen.indexOf(e.target);
+        if (e.isIntersecting && i < 0) onScreen.push(e.target);
+        if (!e.isIntersecting && i >= 0) onScreen.splice(i, 1);
+      });
+      /* сворачиваем сами, разворачиваем — только по клику пользователя:
+         фиксированная панель не должна закрывать контент без его просьбы */
+      if (onScreen.length) setCollapsed(true);
+    }, { threshold: 0.25 });
+    $$('[data-dock-fold]').forEach(function (el) { fo.observe(el); });
   }
 
   /* =============================================== hero: площадь и смета */
@@ -277,14 +292,16 @@
       var rate = parseFloat(sumCell.getAttribute('data-sum'));
       var volCell = tr.querySelector('[data-vol]');
       var k = volCell ? parseFloat(volCell.getAttribute('data-vol')) : 1;
-      var v = area * k;
-      if (volCell) volCell.textContent = Math.round(v) + ' м²';
-      var sum = v * rate;
+      /* объём округляем до целых метров, сумму — до сотен рублей, и складываем
+         уже округлённые строки: столбец в смете обязан сходиться */
+      var v = Math.round(area * k);
+      if (volCell) volCell.textContent = v + ' м²';
+      var sum = Math.round(v * rate / 100) * 100;
       total += sum;
-      sumCell.textContent = money100(sum);
+      sumCell.textContent = money(sum);
     });
-    estTotal.textContent = money100(total);
-    if (phonePrice) phonePrice.textContent = money100(total);
+    estTotal.textContent = money(total);
+    if (phonePrice) phonePrice.textContent = money(total);
     if (estArea) estArea.textContent = area;
     if (chipArea) chipArea.textContent = area;
   }
@@ -565,7 +582,7 @@
   });
 
   /* ================================================================ старт */
-  if (window.innerWidth < 1080) setCollapsed(true);
+  /* стартовое состояние — свёрнут (в разметке), первый экран его не разворачивает */
   setView('day');
   renderDock(false);
 })();

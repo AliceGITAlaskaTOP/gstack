@@ -60,7 +60,7 @@
 <span id="top"></span>
 
 <!-- ===== 01. Первый экран ===== -->
-<section class="section hero" id="hero" data-nav="Первый экран">
+<section class="section hero" id="hero" data-nav="Первый экран" data-dock-fold>
   <span class="deco-grid" aria-hidden="true"></span>
   <div class="wrap hero__in">
     <div>
@@ -121,8 +121,8 @@
             <thead><tr><th>Раздел</th><th class="r">Объём</th><th class="r">Сумма</th></tr></thead>
             <tbody>
               <tr><td>Фундамент, плита 300 мм</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="16102">2 479 700 ₽</td></tr>
-              <tr><td>Коробка дома</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="19045">2 933 000 ₽</td></tr>
-              <tr><td>Кровля тёплая</td><td class="r num" data-vol="1.18">182 м²</td><td class="r num" data-sum="12596">1 939 800 ₽</td></tr>
+              <tr><td>Коробка дома</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="19045">2 932 900 ₽</td></tr>
+              <tr><td>Кровля тёплая</td><td class="r num" data-vol="1.18">182 м²</td><td class="r num" data-sum="10659">1 939 900 ₽</td></tr>
               <tr><td>Инженерия и отделка</td><td class="r num" data-vol="1">154 м²</td><td class="r num" data-sum="29724">4 577 500 ₽</td></tr>
               <tr class="tbl__total"><td>Итого по объекту</td><td class="r"></td><td class="r num" id="estTotal">11 930 000 ₽</td></tr>
             </tbody>
@@ -306,7 +306,7 @@
 </section>
 
 <!-- ===== 03. AI-визуализация (инверсная) ===== -->
-<section class="section section--ink viz" id="viz" data-nav="AI-визуализация">
+<section class="section section--ink viz" id="viz" data-nav="AI-визуализация" data-dock-fold>
   <span class="deco-grid deco-grid--inv" aria-hidden="true"></span>
   <span class="deco-noise" aria-hidden="true"></span>
   <div class="wrap viz__in">
@@ -387,8 +387,8 @@
               <b class="num" id="phonePrice">11 930 000 ₽</b>
             </div>
             <div class="phone__sec"><span>Фундамент</span><span>2 479 700 ₽</span></div>
-            <div class="phone__sec"><span>Коробка дома</span><span>2 933 000 ₽</span></div>
-            <div class="phone__sec"><span>Кровля тёплая</span><span>1 939 800 ₽</span></div>
+            <div class="phone__sec"><span>Коробка дома</span><span>2 932 900 ₽</span></div>
+            <div class="phone__sec"><span>Кровля тёплая</span><span>1 939 900 ₽</span></div>
             <div class="phone__sec"><span>Инженерия и отделка</span><span>4 577 500 ₽</span></div>
             <div class="phone__price" style="border-bottom:0;margin-bottom:0">
               <span style="font-size:13px;color:var(--tx-3)">Срок</span><b class="num">126 дней</b>
@@ -530,7 +530,7 @@
 </section>
 
 <!-- ===== 06. Ваша математика ===== -->
-<section class="section" id="matematika" data-nav="Ваша математика">
+<section class="section" id="matematika" data-nav="Ваша математика" data-dock-fold>
   <span class="deco-grid" aria-hidden="true" style="opacity:.3"></span>
   <div class="wrap" style="position:relative;z-index:1">
     <div class="section-head">
@@ -673,7 +673,7 @@
 </section>
 
 <!-- ===== 08. Тарифы ===== -->
-<section class="section" id="tarify" data-nav="Тарифы">
+<section class="section" id="tarify" data-nav="Тарифы" data-dock-fold>
   <span class="deco-dots" aria-hidden="true"></span>
   <div class="wrap" style="position:relative;z-index:1">
     <div class="section-head">
@@ -851,7 +851,7 @@
     </div>
 
     <div class="form" id="leadForm">
-      <span class="deco-stamp deco-stamp--inv" aria-hidden="true" style="right:16px;top:-12px;background:var(--paper)">A-143</span>
+      <span class="deco-stamp" aria-hidden="true" style="right:16px;top:-12px">A-143</span>
       <div class="form__body">
         <div class="form__steps" aria-hidden="true">
           <span>Шаг <b id="stepNo">1</b> из 2</span>
@@ -947,7 +947,7 @@
       <div class="brand" style="margin-bottom:12px">
         <span class="brand__mark" aria-hidden="true">С</span>
         <span><span class="brand__name" style="color:var(--tx-inv)">СтройСмета</span>
-        <span class="brand__sub" style="color:#6E777B">сметы и предложения для строительных компаний</span></span>
+        <span class="brand__sub" style="color:#8B9498">сметы и предложения для строительных компаний</span></span>
       </div>
       <p style="font-size:14px;max-width:34ch;margin:0">Расчёт, проект и коммуникация с клиентом в одной системе. Демо-концепт.</p>
       <div class="deco-ruler deco-ruler--inv" aria-hidden="true" style="margin-top:18px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -976,8 +976,8 @@
 </footer>
 
 <!-- ===== Док «Ваш расчёт» ===== -->
-<aside class="dock" id="dock" aria-label="Ваш расчёт">
-  <button class="dock__top" type="button" id="dockToggle" aria-expanded="true" aria-controls="dockBody">
+<aside class="dock is-collapsed" id="dock" aria-label="Ваш расчёт">
+  <button class="dock__top" type="button" id="dockToggle" aria-expanded="false" aria-controls="dockBody">
     <span class="dock__ring" aria-hidden="true">
       <svg width="34" height="34" viewBox="0 0 34 34"><circle class="bg" cx="17" cy="17" r="14.5"/><circle class="fg" id="ringFg" cx="17" cy="17" r="14.5" stroke-dasharray="91.1" stroke-dashoffset="72.9"/></svg>
       <b id="ringTxt">20%</b>
@@ -1016,8 +1016,8 @@
       <table class="tbl">
         <tbody>
           <tr><td>Фундамент, плита 300 мм</td><td class="r num">2 479 700 ₽</td></tr>
-          <tr><td>Коробка дома</td><td class="r num">2 933 000 ₽</td></tr>
-          <tr><td>Кровля тёплая</td><td class="r num">1 939 800 ₽</td></tr>
+          <tr><td>Коробка дома</td><td class="r num">2 932 900 ₽</td></tr>
+          <tr><td>Кровля тёплая</td><td class="r num">1 939 900 ₽</td></tr>
           <tr><td>Инженерия и отделка</td><td class="r num">4 577 500 ₽</td></tr>
           <tr class="tbl__total"><td>Итого · срок 126 дней</td><td class="r num">11 930 000 ₽</td></tr>
         </tbody>
