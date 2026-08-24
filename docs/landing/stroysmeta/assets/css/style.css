@@ -1017,3 +1017,13 @@ input[type=range]::-webkit-slider-thumb{margin-top:-8.5px}
 .rail__item:focus-visible{outline:2px solid var(--amber-2);outline-offset:-2px;border-radius:var(--r-sm)}
 .brand{padding:6px 0}
 @media (max-width:719px){.btn--sm{min-height:44px}.chipnav a{padding:11px 14px}}
+
+/* ---------- 28. Грид-колонки не растягиваются под nowrap-контент ----------
+   У грид- и флекс-элементов min-width по умолчанию равен min-content, поэтому
+   одна строка с white-space:nowrap раздувала всю колонку, а секция прятала
+   перелив через overflow:hidden — на мобильном текст уезжал под правый край. */
+.hero__in>*,.viz__in>*,.client__in>*,.math__in>*,.steps__in>*,.faq__in>*,.final__in>*,
+.bento>*,.auto>*{min-width:0}
+.prompt__txt,.browser__url{min-width:0}
+.deco-dim{white-space:normal}
+.deco-dim--v{white-space:nowrap}

@@ -28,7 +28,10 @@ def main():
     css = read('assets/css/style.css')
     js = read('assets/js/app.js')
 
+    # в артефакте заголовок — имя в галерее, поэтому берём только имя продукта,
+    # а поисковый хвост после тире оставляем странице
     title = re.search(r'<title>(.*?)</title>', html, re.S).group(1).strip()
+    title = title.split(' — ')[0].strip()
     fonts = re.search(r'<link href="https://fonts\.googleapis[^>]+>', html).group(0)
 
     body = re.search(r'<body>(.*)</body>', html, re.S).group(1)
