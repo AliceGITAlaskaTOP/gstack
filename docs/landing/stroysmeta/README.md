@@ -107,10 +107,17 @@ build-artifact.py          сборка одного файла для публ�
 - `prefers-reduced-motion` гасит всё, включая count-up и draw-on: показывается конечное
   состояние.
 
-## Публикация артефактом
+## Сборка одного файла
 
 ```bash
-python3 build-artifact.py     # соберёт dist/artifact.html с вшитыми CSS, JS и картинками
+python3 build-artifact.py              # dist/artifact.html — для публикации артефактом
+python3 build-artifact.py --standalone # dist/stroysmeta.html — отдать заказчику одним файлом
 ```
 
+Оба режима вшивают CSS, JS и картинки (в `data:` URI). Разница в обёртке:
+артефакт публикуется без `<!doctype>/<html>/<body>` — их добавляет платформа,
+а её CSP режет любые внешние хосты, кроме Google Fonts. Standalone — полноценный
+документ, открывается двойным кликом.
+
 Скрипт скажет, какие изображения не найдены, и предупредит о превышении 16 МБ.
+Каталог `dist/` не коммитится.
